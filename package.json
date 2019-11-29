@@ -1,0 +1,19 @@
+{
+  "name": "generator-tapjaw",
+  "version": "0.1.0",
+  "description": "Tapjaw Project Generator",
+  "main": "index.js",
+  "author": "Jeramy Wenserit <jeramy@digidip.net>",
+  "license": "MIT",
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "lodash": "^4.17.15",
+    "yeoman-generator": "^1.0.0"
+  }
+}
