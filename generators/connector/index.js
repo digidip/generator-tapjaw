@@ -1,28 +1,18 @@
-const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const _ = require('lodash');
 const inquirer = require('inquirer');
 const fs = require('fs');
+const BaseGenerator = require('../base');
 
-module.exports = class extends Generator {
+module.exports = class extends BaseGenerator {
     initializing() {
         this.log(`Add new Tapjaw Connector in project: ${chalk.green(this.contextRoot)}`);
 
         let error = false;
-        if (!fs.existsSync(`${this.contextRoot}/src/`)) {
-            this.log.error(`Project does not contain "${chalk.red.bold(this.contextRoot + '/src/')}" directory.`);
-            error = true;         
-        }
+        error = this._checkForDirectorySrc(error);
+        error = this._checkForDirectoryConnectors(error);
+        error = this._checkForDirectoryContracts(error);
 
-        if (!fs.existsSync(`${this.contextRoot}/src/connectors/`)) {
-            this.log.error(`Project does not contain "${chalk.red.bold(this.contextRoot + '/src/connectors/')}" directory.`);
-            error = true;
-        }
-
-        if (!fs.existsSync(`${this.contextRoot}/src/contracts/`)) {
-            this.log.error(`Project does not contain "${chalk.red.bold(this.contextRoot + '/src/contracts/')}" directory.`);
-            error = true;
-        }
         if (error) process.exit(1);
     }
 
@@ -67,7 +57,7 @@ module.exports = class extends Generator {
             this.log.error(`${chalk.red.italic(this.filename)} already exists. Terminating!`);
             process.exit(1);
         }
-        
+
         // this.log(`Creating command: ${chalk.green.bold(this.filename)} - class name will be "${chalk.yellowBright.bold('class ' + _.chain(this.commandName.commandName).camelCase().upperFirst() + ' extends TapjawCommand { ... }')}".`);
     }
 
@@ -113,7 +103,7 @@ module.exports = class extends Generator {
             return;
         }
 
-        this.args = { 
+        this.args = {
             ...(
                 await this.prompt(
                 {
@@ -255,11 +245,6 @@ module.exports = class extends Generator {
     }
 
     writing() {
-        console.log(
-            this.credentials,
-            this.security,
-            this.args
-        )
         this.fs.copyTpl(
             this.templatePath('contract-connector.ts'),
             this.destinationPath(`src/contracts/${this.args.connectorName}-connector.ts`),
@@ -269,7 +254,6 @@ module.exports = class extends Generator {
         );
 
         if (this.args.connectorType === 'TapjawHttpConnector') {
-            
             this.fs.copyTpl(
                 this.templatePath('http-connector.ts'),
                 this.destinationPath(`src/connectors/${this.args.connectorName}-http-connector.ts`),

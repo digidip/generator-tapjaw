@@ -3,21 +3,16 @@ const chalk = require('chalk');
 const _ = require('lodash');
 const path = require('path');
 const fs = require('fs');
+const BaseGenerator = require('../base');
 
-module.exports = class extends Generator {
+module.exports = class extends BaseGenerator {
     initializing() {
         this.log(`Add new Tapjaw Command in project: ${chalk.green(this.contextRoot)}`);
 
         let error = false;
-        if (!fs.existsSync(`${this.contextRoot}/src/`)) {
-            this.log.error(`Project does not contain "${chalk.red.bold(this.contextRoot + '/src/')}" directory.`);
-            error = true;         
-        }
+        error = this._checkForDirectorySrc(error);
+        error = this._checkForDirectoryCommands(error);
 
-        if (!fs.existsSync(`${this.contextRoot}/src/commands/`)) {
-            this.log.error(`Project does not contain "${chalk.red.bold(this.contextRoot + '/src/commands/')}" directory.`);
-            error = true;
-        }
         if (error) process.exit(1);
     }
 
@@ -35,7 +30,7 @@ module.exports = class extends Generator {
             this.log.error(`${chalk.red.italic(this.filename)} already exists. Terminating!`);
             process.exit(1);
         }
-        
+
         this.log(`Creating command: ${chalk.green.bold(this.filename)} - class name will be "${chalk.yellowBright.bold('class ' + _.chain(this.commandName.commandName).camelCase().upperFirst() + ' extends TapjawCommand { ... }')}".`);
     }
 
