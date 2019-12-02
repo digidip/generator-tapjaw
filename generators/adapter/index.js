@@ -58,7 +58,6 @@ module.exports = class extends BaseGenerator {
     }
 
     writing() {
-        console.log(this.connector);
         this.fs.copyTpl(
             this.templatePath('adapter.ts'),
             this.destinationPath(`src/adapters/${this.args.adapterName}-adapter.ts`),
