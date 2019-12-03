@@ -81,7 +81,7 @@ module.exports = class extends BaseGenerator {
             this.templatePath('message.ts'),
             this.destinationPath(`src/contracts/${this.args.messageName}-message.ts`),
             {
-                classname: _.chain(this.args.connectorName).camelCase().upperFirst(),
+                classname: _.chain(this.args.messageName).camelCase().upperFirst(),
                 properties: this.properties,
                 interfaces: this.customTypes,
             }
@@ -89,6 +89,6 @@ module.exports = class extends BaseGenerator {
     }
 
     end() {
-        this.log(`Message has been succesfully created at ${chalk.green.italic(this.filename)}.`);
+        this.log(`Message has been succesfully created at ${chalk.green.italic(this.destinationPath(`src/contracts/${this.args.messageName}-message.ts`))}.`);
     }
 };
