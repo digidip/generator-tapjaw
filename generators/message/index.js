@@ -61,7 +61,6 @@ module.exports = class extends BaseGenerator {
                     console.log(type.toLowerCase().replace(/\[\]/g, ''));
                     if (['string', 'number', 'boolean', 'null', 'undefined'].indexOf(type.toLowerCase().replace(/\[\]/g, '').trim()) === -1) {
                         // custom type
-                        console.log('adding custom', ['string', 'number', 'boolean', 'null', 'undefined'].indexOf(type.toLowerCase().replace(/\[\]/g, '')));
                         this.customTypes.push(type.toLowerCase().replace(/\[\]/g, '').trim());
                     }
 
