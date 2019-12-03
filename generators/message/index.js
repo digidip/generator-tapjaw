@@ -33,6 +33,8 @@ module.exports = class extends BaseGenerator {
             type: 'confirm',
         });
 
+        this.properties = [];
+        this.customTypes = [];
         if (addProperties.decision) {
             const questions = [
                 {
@@ -53,8 +55,6 @@ module.exports = class extends BaseGenerator {
                 }
             ];
 
-            this.properties = [];
-            this.customTypes = [];
             const ask = async () => {
                 await inquirer.prompt(questions).then(async result => {
                     const [ prop, type ] = result.property.replace(/\ ;/g, '').split(':');
