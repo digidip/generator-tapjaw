@@ -1,8 +1,8 @@
-import { TapjawAdapter, TapjawMessage, sortObjectArrays } from 'tapjaw-importer';
+import { TapjawAdapter, TapjawMessage, sortObjectArrays<% if (defaultimport) { %>, TapjawMessage<% } %> } from 'tapjaw-importer';
 import <%- connectorclass %> from '../connectors/<%- connectorpath %>';
-
-
-export default class <%- classname %>Adapter implements TapjawAdapter<<%- classname %>Adapter, TapjawMessage> {
+<% if (customimport) { %>import <%- messagetype %> from '../contracts/<%- customimport %>';
+<% } %>
+export default class <%- classname %>Adapter implements TapjawAdapter<<%- classname %>Adapter, <%- messagetype %>> {
     /**
      * Provide the connector implementation the Adapter should use.
      *
@@ -14,10 +14,10 @@ export default class <%- classname %>Adapter implements TapjawAdapter<<%- classn
      * Example of a Adapter method implementation.
      *
      * The important part of the implemenation is that every Adapter
-     * method must return a AsyncGenerator<TapjawMessage> data type.
+     * method must return a AsyncGenerator<<%- messagetype %>> data type.
      *
      */
-    // public async * getSomething(): AsyncGenerator<TapjawMessage> {
+    // public async * getSomething(): AsyncGenerator<<%- messagetype %>> {
     //     try {
     //         /**
     //          * Request the data from the connector, which should contain a
@@ -30,11 +30,11 @@ export default class <%- classname %>Adapter implements TapjawAdapter<<%- classn
     //          */
     //         for (const payload of apiResponse.data) {
     //             /**
-    //              * Yield a TapjawMessage type with the necassary information.
+    //              * Yield a <%- messagetype %> type with the necassary information.
     //              *
     //              * sortObjectArrays() will sort any internal array properties to prevent signature corruption.
     //              */
-    //             yield new TapjawMessage('a message', sortObjectArrays(payload));
+    //             yield new <%- messagetype %>('a <%- messagetype %>', sortObjectArrays(payload));
     //         }
     //     } catch (err) {
     //         /**
