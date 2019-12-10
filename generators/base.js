@@ -48,4 +48,13 @@ module.exports = class extends Generator {
 
         return error;
     }
+
+    _checkForDirectoryConfigs(error) {
+        if (!fs.existsSync(`${this.contextRoot}/src/configs/`)) {
+            this.log.error(`Project does not contain "${chalk.red.bold(this.contextRoot + '/src/configs/')}" directory.`);
+            return true;
+        }
+
+        return error;
+    }
 }
