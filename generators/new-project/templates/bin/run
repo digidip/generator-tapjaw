@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 
+const dotEnv = require('dotenv');
+const path = require('path');
+dotEnv.config({
+    path: path.resolve(__dirname + '/../.env'), // .env must be in the root of the project.
+});
+
 require('@oclif/command').run()
     .then(require('@oclif/command/flush'))
     .catch(require('@oclif/errors/handle'))
