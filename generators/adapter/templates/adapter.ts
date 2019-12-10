@@ -1,4 +1,4 @@
-import { TapjawAdapter, TapjawMessage, sortObjectArrays<% if (defaultimport) { %>, TapjawMessage<% } %> } from 'tapjaw-importer';
+import { TapjawAdapter, sortObjectArrays<% if (defaultimport) { %>, TapjawMessage<% } %> } from 'tapjaw-importer';
 import <%- connectorclass %> from '../connectors/<%- connectorpath %>';
 <% if (customimport) { %>import <%- messagetype %> from '../contracts/<%- customimport %>';
 <% } %>
