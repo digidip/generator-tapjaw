@@ -1,0 +1,50 @@
+{
+    "name": "<%- name %>",
+    "description": "<%- description %>",
+    "version": "0.1.0",
+    "author": "<%- author %>",
+    "bin": {
+      "example": "./bin/run"
+    },
+    "dependencies": {
+      "@oclif/command": "^1",
+      "@oclif/config": "^1",
+      "@oclif/plugin-help": "^2",
+      "tapjaw-importer": "https://github.com/digidip/tapjaw-importer.git#semver:^0.1.0",
+      "tslib": "^1",
+      "typescript": "^3.7"
+    },
+    "devDependencies": {
+      "@oclif/dev-cli": "^1",
+      "@oclif/tslint": "^3",
+      "@types/node": "^10",
+      "globby": "^10",
+      "tslint": "^5"
+    },
+    "engines": {
+      "node": ">=10.0.0"
+    },
+    "files": [
+      "/bin",
+      "/lib",
+      "/npm-shrinkwrap.json",
+      "/oclif.manifest.json"
+    ],
+    "keywords": [
+      "oclif"
+    ],
+    "license": "MIT",
+    "main": "lib/index.js",
+    "oclif": {
+      "commands": "./lib/commands",
+      "plugins": [
+        "@oclif/plugin-help"
+      ]
+    },
+    "scripts": {
+      "postpack": "rm -f oclif.manifest.json",
+      "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+      "version": "oclif-dev readme && git add README.md"
+    },
+    "types": "lib/index.d.ts"
+  }
