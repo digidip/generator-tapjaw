@@ -48,13 +48,13 @@ export default class <%= classname %> extends TapjawCommand {
      * @param flags TapjawCommandFlags
      * @yields AnimalMessage
      */
-    protected getAdapterCallback(args: TapjawCommandArgs, flags: TapjawCommandFlags): TapjawAdapterCallback {
+    protected getAdapterCallback(args: TapjawCommandArgs, flags: TapjawCommandFlags): TapjawAdapterCallback<TapjawMessage> {
         const adapter = this.adapter;
 
         // const { customFlag } = flags;
         // if (customFlag) {
         //     // Call the Adapter method using POST.
-        //     return async function* (): AsyncGenerator<AnimalMessage> {
+        //     return async function* (): AsyncGenerator<TapjawMessage> {
         //         /**
         //          * Pipe generator yield to Iterator
         //          */
@@ -63,7 +63,7 @@ export default class <%= classname %> extends TapjawCommand {
         // }
 
         // Call the Adapter method using GET.
-        return async function* (): AsyncGenerator<<%= classname %>Message> {
+        return async function* (): AsyncGenerator<TapjawMessage> {
             /**
              * Pipe generator yield to Iterator
              */
