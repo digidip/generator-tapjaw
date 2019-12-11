@@ -78,6 +78,11 @@ module.exports = class extends Generator {
             this.destinationPath(this.args.projectName + '/.env')
         );
 
+        this.fs.copy(
+            this.templatePath('bin'),
+            this.destinationPath(this.args.projectName + '/bin')
+        );
+
         this.fs.copyTpl(
             this.templatePath('package.json'),
             this.destinationPath(this.args.projectName + '/package.json'),
