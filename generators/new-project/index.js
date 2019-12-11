@@ -28,10 +28,8 @@ module.exports = class extends Generator {
 
     async writing() {
         fs.mkdirSync(this.args.root);
-        // this.fs.copy(
-        //     this.templatePath('src/**/.*'),
-        //     this.destinationPath(this.args.projectName + '/src'),
-        // );
+        this.log(`   ${chalk.green('create')} ${this.args.root}`);
+
         fs.mkdirSync(this.destinationPath(this.args.projectName + '/src'));
         this.log(`   ${chalk.green('create')} ${this.args.projectName}/src`);
 
