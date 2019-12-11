@@ -1,6 +1,6 @@
 {
   "name": "generator-tapjaw",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Tapjaw Project Generator",
   "main": "index.js",
   "author": "Jeramy Wenserit <jeramy@digidip.net>",
