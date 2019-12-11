@@ -28,13 +28,46 @@ module.exports = class extends Generator {
 
     async writing() {
         fs.mkdirSync(this.args.root);
+        // this.fs.copy(
+        //     this.templatePath('src/**/.*'),
+        //     this.destinationPath(this.args.projectName + '/src'),
+        // );
+        fs.mkdirSync(this.destinationPath(this.args.projectName + '/src'));
+        this.log(`   ${chalk.green('create')} ${this.args.projectName}/src`);
+
+        fs.mkdirSync(this.destinationPath(this.args.projectName + '/src/contracts'));
+        this.log(`   ${chalk.green('create')} ${this.args.projectName}/src/contracts`);
         this.fs.copy(
-            this.templatePath('src/**/.*'),
-            this.destinationPath(this.args.projectName + '/src'),
+            this.templatePath('.gitkeep'),
+            this.destinationPath(this.args.projectName + '/src/contracts/.gitkeep')
         );
+
+        fs.mkdirSync(this.destinationPath(this.args.projectName + '/src/commands'));
+        this.log(`   ${chalk.green('create')} ${this.args.projectName}/src/commands`);
         this.fs.copy(
-            this.templatePath('bin/*'),
-            this.destinationPath(this.args.projectName + '/bin')
+            this.templatePath('.gitkeep'),
+            this.destinationPath(this.args.projectName + '/src/commands/.gitkeep')
+        );
+
+        fs.mkdirSync(this.destinationPath(this.args.projectName + '/src/connectors'));
+        this.log(`   ${chalk.green('create')} ${this.args.projectName}/src/connectors`);
+        this.fs.copy(
+            this.templatePath('.gitkeep'),
+            this.destinationPath(this.args.projectName + '/src/connectors/.gitkeep')
+        );
+
+        fs.mkdirSync(this.destinationPath(this.args.projectName + '/src/configs'));
+        this.log(`   ${chalk.green('create')} ${this.args.projectName}/src/configs`);
+        this.fs.copy(
+            this.templatePath('.gitkeep'),
+            this.destinationPath(this.args.projectName + '/src/configs/.gitkeep')
+        );
+
+        fs.mkdirSync(this.destinationPath(this.args.projectName + '/src/adapters'));
+        this.log(`   ${chalk.green('create')} ${this.args.projectName}/src/adapters`);
+        this.fs.copy(
+            this.templatePath('.gitkeep'),
+            this.destinationPath(this.args.projectName + '/src/adapters/.gitkeep')
         );
 
         this.fs.copyTpl(

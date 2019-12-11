@@ -6,11 +6,14 @@
   "author": "Jeramy Wenserit <jeramy@digidip.net>",
   "license": "MIT",
   "files": [
-    "generators"
+    "generators",
+    "generators/new-project/templates/src/README.md"
   ],
   "keywords": [
     "yeoman-generator"
   ],
+  "bugs": "https://github.com/digidip/generator-tapjaw/issues",
+  "homepage": "https://github.com/digidip/generator-tapjaw",
   "dependencies": {
     "chalk": "^3.0.0",
     "glob": "^7.1.6",
