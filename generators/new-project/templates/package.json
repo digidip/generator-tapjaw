@@ -28,6 +28,7 @@
     "keywords": [
         "oclif"
     ],
+    "files": ["*"],
     "license": "MIT",
     "main": "lib/index.js",
     "oclif": {
