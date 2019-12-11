@@ -68,6 +68,16 @@ module.exports = class extends Generator {
             this.destinationPath(this.args.projectName + '/src/adapters/.gitkeep')
         );
 
+        this.fs.copy(
+            this.templatePath('.editorconfig'),
+            this.destinationPath(this.args.projectName + '/.editorconfig')
+        );
+
+        this.fs.copy(
+            this.templatePath('.env'),
+            this.destinationPath(this.args.projectName + '/.env')
+        );
+
         this.fs.copyTpl(
             this.templatePath('package.json'),
             this.destinationPath(this.args.projectName + '/package.json'),
