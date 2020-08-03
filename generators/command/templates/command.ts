@@ -1,4 +1,4 @@
-import { TapjawCommand } from 'tapjaw-importer';
+import { TapjawCommand, TapjawMessage } from 'tapjaw-importer';
 import { TapjawCommandArgs, TapjawCommandFlags } from 'tapjaw-importer/lib/contracts/tapjaw-command';
 import { TapjawAdapterCallback } from 'tapjaw-importer/lib/contracts/tapjaw-adapter';
 
